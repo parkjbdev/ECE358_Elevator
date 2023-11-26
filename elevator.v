@@ -1,5 +1,6 @@
 `timescale 100ms / 100ms
 module elevator(
+  input clk,
   input door_open,
   // 00 or 11 = stationary, 01 = up, 10 = down
   input [1:0] updown,
@@ -11,74 +12,74 @@ module elevator(
   // State Machine 
   // Floors[2:0] are represented as gray code
   // MSB is the state of the door (0 = closed, 1 = open)
-  parameter floor1_closed = 4'b0001;
-  parameter floor2_closed = 4'b0011;
-  parameter floor3_closed = 4'b0010;
-  parameter floor4_closed = 4'b0110;
-  parameter floor5_closed = 4'b0111;
-  parameter floor1_open = 4'b1001;
-  parameter floor2_open = 4'b1011;
-  parameter floor3_open = 4'b1010;
-  parameter floor4_open = 4'b1110;
-  parameter floor5_open = 4'b1111;
+  parameter FLOOR1_CLOSED = 4'b0001;
+  parameter FLOOR2_CLOSED = 4'b0011;
+  parameter FLOOR3_CLOSED = 4'b0010;
+  parameter FLOOR4_CLOSED = 4'b0110;
+  parameter FLOOR5_CLOSED = 4'b0111;
+  parameter FLOOR1_OPENED = 4'b1001;
+  parameter FLOOR2_OPENED = 4'b1011;
+  parameter FLOOR3_OPENED = 4'b1010;
+  parameter FLOOR4_OPENED = 4'b1110;
+  parameter FLOOR5_OPENED = 4'b1111;
 
-  initial state = floor1_closed;
+  initial state = FLOOR1_CLOSED;
 
-  always @(state or door_open or updown)
+  always @(posedge clk or state or door_open or updown)
   begin
     case (state)
-      floor1_closed:
-        if (door_open) #10 state = floor1_open;
+      FLOOR1_CLOSED:
+        if (door_open) #10 state = FLOOR1_OPENED;
         else begin
-          if (updown == 2'b01) #10 state = floor2_closed;
-          else state = floor1_closed;
+          if (updown == 2'b01) #10 state = FLOOR2_CLOSED;
+          else state = FLOOR1_CLOSED;
         end
-      floor1_open: 
-        if (door_open) state = floor1_open;
-        else #10 state = floor1_closed;
+      FLOOR1_OPENED:
+        if (door_open) state = FLOOR1_OPENED;
+        else #10 state = FLOOR1_CLOSED;
 
-      floor2_closed:
-        if (door_open) #10 state = floor2_open;
+      FLOOR2_CLOSED:
+        if (door_open) #10 state = FLOOR2_OPENED;
         else begin
-          if (updown == 2'b01) #10 state = floor3_closed;
-          else if (updown == 2'b10) #10 state = floor1_closed;
-          else state = floor2_closed;
+          if (updown == 2'b01) #10 state = FLOOR3_CLOSED;
+          else if (updown == 2'b10) #10 state = FLOOR1_CLOSED;
+          else state = FLOOR2_CLOSED;
         end
-      floor2_open: 
-        if (door_open) state = floor2_open;
-        else #10 state = floor2_closed;
+      FLOOR2_OPENED:
+        if (door_open) state = FLOOR2_OPENED;
+        else #10 state = FLOOR2_CLOSED;
 
-      floor3_closed:
-        if (door_open) #10 state = floor3_open;
+      FLOOR3_CLOSED:
+        if (door_open) #10 state = FLOOR3_OPENED;
         else begin
-          if (updown == 2'b01) #10 state = floor4_closed;
-          else if (updown == 2'b10) #10 state = floor2_closed;
-          else state = floor3_closed;
+          if (updown == 2'b01) #10 state = FLOOR4_CLOSED;
+          else if (updown == 2'b10) #10 state = FLOOR2_CLOSED;
+          else state = FLOOR3_CLOSED;
         end
-      floor3_open: 
-        if (door_open) state = floor3_open;
-        else #10 state = floor3_closed;
+      FLOOR3_OPENED:
+        if (door_open) state = FLOOR3_OPENED;
+        else #10 state = FLOOR3_CLOSED;
 
-      floor4_closed:
-        if (door_open) #10 state = floor4_open;
+      FLOOR4_CLOSED:
+        if (door_open) #10 state = FLOOR4_OPENED;
         else begin
-          if (updown == 2'b01) #10 state = floor5_closed;
-          else if (updown == 2'b10) #10 state = floor3_closed;
-          else state = floor4_closed;
+          if (updown == 2'b01) #10 state = FLOOR5_CLOSED;
+          else if (updown == 2'b10) #10 state = FLOOR3_CLOSED;
+          else state = FLOOR4_CLOSED;
         end
-      floor4_open: 
-        if (door_open) state = floor4_open;
-        else #10 state = floor4_closed;
+      FLOOR4_OPENED:
+        if (door_open) state = FLOOR4_OPENED;
+        else #10 state = FLOOR4_CLOSED;
 
-      floor5_closed:
-        if (door_open) #10 state = floor5_open;
+      FLOOR5_CLOSED:
+        if (door_open) #10 state = FLOOR5_OPENED;
         else begin
-          if (updown == 2'b10) #10 state = floor4_closed;
-          else state = floor5_closed;
+          if (updown == 2'b10) #10 state = FLOOR4_CLOSED;
+          else state = FLOOR5_CLOSED;
         end
-      floor5_open: 
-        if (door_open) state = floor5_open;
-        else #10 state = floor5_closed;
+      FLOOR5_OPENED:
+        if (door_open) state = FLOOR5_OPENED;
+        else #10 state = FLOOR5_CLOSED;
     endcase
   end
 

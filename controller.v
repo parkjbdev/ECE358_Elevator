@@ -11,9 +11,18 @@ module controller(
   reg [2:0] target_floor_input;
   wire ev_door;
 
-  target_controller u_target_controller(
+  // target_controller u_target_controller(
+  //   .clk(clk),
+  //   // inputs
+  //   .target_floor_input(target_floor_input),
+  //   // outputs
+  //   .ev_floor_output(ev_floor),
+  //   .ev_door_output(ev_door)
+  // );
+
+  mover u_mover(
     // inputs
-    .target_floor_input(target_floor_input),
+    .dest_input(target_floor_input),
     // outputs
     .ev_floor_output(ev_floor),
     .ev_door_output(ev_door)
@@ -269,54 +278,159 @@ module controller(
   // assign current_floor_output = ev_floor;
 endmodule
 
-module target_controller(
-  input [2:0] target_floor_input,
-  output [2:0] ev_floor_output,
+// module target_controller(
+//   input clk,
+//   input [2:0] target_floor_input,
+//   output [2:0] ev_floor_output,
+//   output ev_door_output
+// );
+// // Elevator Module
+//   reg ev_door_open;
+//   reg [1:0] ev_updown;
+//   wire ev_door;
+//   wire [2:0] ev_floor;
+// 
+//   elevator u_elevator(
+//     .clk(clk),
+//     // inputs
+//     .door_open(ev_door_open),
+//     .updown(ev_updown),
+//     // outputs
+//     .door(ev_door),
+//     .floor(ev_floor)
+//   );
+// 
+//   reg ev_moving;
+// 
+//   initial begin
+//     ev_door_open = 0;
+//     ev_updown = 2'b00;
+//     ev_moving = 0;
+//   end
+// 
+//   always @(target_floor_input or ev_floor or negedge ev_door) begin
+//     if (target_floor_input < ev_floor) begin
+//       ev_moving = 1;
+//       ev_door_open = 0; // close door
+//       ev_updown = 2'b10; // down
+//     end else if (target_floor_input > ev_floor) begin
+//       ev_moving = 1;
+//       ev_door_open = 0; // close door
+//       ev_updown = 2'b01; // up
+//     end else begin
+//       if (ev_moving == 1) begin
+//         ev_moving = 0;
+//         ev_door_open = 1; // open door
+//         ev_updown = 2'b00; // stop
+//         #25
+//         ev_door_open = 0; // close door
+//       end
+//     end
+//   end
+// 
+//   assign ev_floor_output = ev_floor;
+//   assign ev_door_output = ev_door;
+// endmodule
+
+module mover(
+  input[2:0] dest_input,
+  output[2:0] ev_floor_output,
   output ev_door_output
 );
+
+reg clk;
+initial clk = 0;
+always #1 clk = ~clk;
+
+// States
+parameter IDLE_OPENED = 2'b11;
+parameter IDLE_CLOSED = 2'b00;
+parameter MOVING_UP = 2'b01;
+parameter MOVING_DOWN = 2'b10;
+
+// State
+reg[1:0] state;
+initial state = IDLE_CLOSED;
+
+// Arrival Flag
+reg arrived;
+initial arrived = 1;
+
+always @(ev_floor or dest_input or ev_door)
+  case (state)
+    IDLE_CLOSED:
+      if (dest_input > ev_floor_output) state = MOVING_UP;
+      else if (dest_input < ev_floor_output) state = MOVING_DOWN;
+      else if (arrived == 0) state = IDLE_OPENED;
+      else state = IDLE_CLOSED;
+  
+    IDLE_OPENED:
+      if (arrived == 1) state = IDLE_CLOSED;
+  
+    MOVING_DOWN:
+      if (dest_input < ev_floor_output) state = MOVING_DOWN;
+      else state = IDLE_CLOSED;
+  
+    MOVING_UP:
+      if (dest_input > ev_floor_output) state = MOVING_UP;
+      else state = IDLE_CLOSED;
+  
+    default: state = IDLE_CLOSED;
+  endcase
+
 // Elevator Module
-  reg ev_door_open;
-  reg [1:0] ev_updown;
-  wire ev_door;
-  wire [2:0] ev_floor;
+reg ev_door_open;
+reg [1:0] ev_updown;
+wire ev_door;
+wire [2:0] ev_floor;
 
-  elevator u_elevator(
-    // inputs
-    .door_open(ev_door_open),
-    .updown(ev_updown),
-    // outputs
-    .door(ev_door),
-    .floor(ev_floor)
-  );
 
-  reg ev_moving;
+elevator u_elevator(
+  .clk(clk),
+  // inputs
+  .door_open(ev_door_open),
+  .updown(ev_updown),
+  // outputs
+  .door(ev_door),
+  .floor(ev_floor)
+);
 
-  initial begin
-    ev_door_open = 0;
-    ev_updown = 2'b00;
-    ev_moving = 0;
-  end
-
-  always @(target_floor_input or ev_floor or negedge ev_door) begin
-    if (target_floor_input < ev_floor) begin
-      ev_moving = 1;
-      ev_door_open = 0; // close door
-      ev_updown = 2'b10; // down
-    end else if (target_floor_input > ev_floor) begin
-      ev_moving = 1;
-      ev_door_open = 0; // close door
-      ev_updown = 2'b01; // up
-    end else begin
-      if (ev_moving == 1) begin
-        ev_moving = 0;
-        ev_door_open = 1; // open door
-        ev_updown = 2'b00; // stop
-        #25
-        ev_door_open = 0; // close door
-      end 
+always @(state) begin
+  case (state)
+    IDLE_CLOSED:
+    begin
+      ev_door_open = 0;
+      ev_updown = 2'b00;
     end
-  end
+    IDLE_OPENED:
+    begin
+      arrived = 1;
+      ev_door_open = 1;
+      ev_updown = 2'b00;
+    end
+    MOVING_DOWN:
+    begin
+      arrived = 0;
+      ev_door_open = 0;
+      ev_updown = 2'b10;
+    end
+    MOVING_UP:
+    begin
+      arrived = 0;
+      ev_door_open = 0;
+      ev_updown = 2'b01;
+    end
+    default:
+    begin
+      arrived = 1;
+      ev_door_open = 0;
+      ev_updown = 2'b00;
+    end
 
-  assign ev_floor_output = ev_floor;
-  assign ev_door_output = ev_door;
+  endcase
+end
+
+assign ev_floor_output = ev_floor;
+assign ev_door_output = ev_door;
+
 endmodule

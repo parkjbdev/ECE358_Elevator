@@ -23,25 +23,25 @@ module TB_final();
     set_clk = 0;
     #50;
 
-    // 2 to 5
-    set_clk = ~set_clk; 
-    src_input = 3'b010; dest_input = 3'b101; direction_input = 1'b1; #1 
-    set_clk = ~set_clk; 
+    // 4 to 2
+    set_clk = ~set_clk;
+    src_input = 3'b100; dest_input = 3'b010; direction_input = 1'b0; #1
+    set_clk = ~set_clk;
     #49;
 
-    // 3 to 4
-    set_clk = ~set_clk; 
-    src_input = 3'b011; dest_input = 3'b100; direction_input = 1'b1; #1 
-    set_clk = ~set_clk; 
+    // 5 to 3
+    set_clk = ~set_clk;
+    src_input = 3'b101; dest_input = 3'b011; direction_input = 1'b0; #1
+    set_clk = ~set_clk;
     #49;
 
-    // Cause Elevator is busy while opening door for the user to get out 
+    // Cause Elevator is busy while opening door for the user to get out
     #30;
 
     // 4 to 3
-    set_clk = ~set_clk; 
-    src_input = 3'b100; dest_input = 3'b011; direction_input = 1'b0; #1 
-    set_clk = ~set_clk; 
+    // set_clk = ~set_clk;
+    // src_input = 3'b100; dest_input = 3'b011; direction_input = 1'b0; #1 
+    // set_clk = ~set_clk;
 
     #1000;
     $finish;
