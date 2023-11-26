@@ -42,7 +42,9 @@ module controller(
     // Assertion
     if (src_input == dest_input)
       $display("Input Assertion Failed");
-    else if ((src_input > dest_input & direction_input == 1) | (src_input < dest_input & direction_input == 0))
+    else if (src_input > dest_input & direction_input == 1)
+      $display("Input Assertion Failed");
+    else if (src_input < dest_input & direction_input == 0)
       $display("Input Assertion Failed");
     else begin
       casex (done)
@@ -311,7 +313,7 @@ module target_controller(
         ev_moving = 0;
         ev_door_open = 1; // open door
         ev_updown = 2'b00; // stop
-        #25
+        #20; // Waiting 
         ev_door_open = 0; // close door
       end 
     end

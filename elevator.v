@@ -6,6 +6,9 @@ module elevator(
   output wire door,
   output wire[2:0] floor
 );
+  reg clk;
+  initial clk = 0;
+  always #10 clk = ~clk;
   reg[3:0] state;
 
   // State Machine 
@@ -24,7 +27,7 @@ module elevator(
 
   initial state = floor1_closed;
 
-  always @(state or door_open or updown)
+  always @(clk or state or door_open or updown)
   begin
     case (state)
       floor1_closed:
