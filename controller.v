@@ -303,15 +303,18 @@ module target_controller(
     if (target_floor_input < ev_floor) begin
       ev_moving = 1;
       ev_door_open = 0; // close door
+      #10;
       ev_updown = 2'b10; // down
     end else if (target_floor_input > ev_floor) begin
       ev_moving = 1;
       ev_door_open = 0; // close door
+      #10;
       ev_updown = 2'b01; // up
     end else begin
       if (ev_moving == 1) begin
         ev_moving = 0;
         ev_door_open = 1; // open door
+        #10;
         ev_updown = 2'b00; // stop
         #20; // Waiting 
         ev_door_open = 0; // close door
