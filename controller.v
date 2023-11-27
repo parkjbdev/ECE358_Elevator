@@ -73,28 +73,24 @@ module controller(
     // done: 2'bx0, on_board: 2'bx0
     if ((done == 2'b10 | done == 2'b00) & (on_board == 2'b10 | on_board == 2'b00) & ev_floor == src1_input) // If 1st rides
     begin
-      target_floor_input = src1_input; // open and close door
       on_board = on_board + 2'b01; // on_board = 2'bx1;
     end
     // done: 2'bx0, on_board: 2'bx1
     else if ((done == 2'b10 | done == 2'b00) & (on_board == 2'b11 | on_board == 2'b01) & ev_floor == dest1_input) // If 1st person arrived dest.
     begin
-      target_floor_input = dest1_input; // open and close door
       done = done + 2'b01; // done = 2'bx1
       on_board = on_board & 2'b10; // on_board = 2'bx0;
     end
-  
+
     // 2nd person
     // done: 2'b0x, on_board: 2'b0x
     if ((done == 2'b01 | done == 2'b00) & (on_board == 2'b01 | on_board == 2'b00) & ev_floor == src2_input) // If 2nd rides
     begin
-      target_floor_input = src2_input; // open and close door
       on_board = on_board + 2'b10; // on_board = 2'b1x;
     end
     // done: 2'b0x, on_board: 2'b1x
     else if ((done == 2'b01 | done == 2'b00) & (on_board == 2'b10 | on_board == 2'b11) & ev_floor == dest2_input) // If 2nd person arrived dest.
     begin
-      target_floor_input = dest2_input; // open and close door
       done = done + 2'b10; // done = 2'b1x
       on_board = on_board & 2'b01; // on_board = 2'b0x;
     end
@@ -108,7 +104,7 @@ module controller(
         if (on_board == 2'b01) // only 1 is on ride
         begin
           // if (src2_input < ev_floor) begin end // ignore
-          // else if (src2_input == ev_floor) begin end // open and close door. will be done above
+          // else if (src2_input == ev_floor) begin end // open and close door. will be done naturally
           // else 
           if (src2_input > ev_floor)
           begin
@@ -122,7 +118,7 @@ module controller(
         else if (on_board == 2'b10) // only 2 is on ride
         begin
           // if (src1_input < ev_floor) begin end // ignore
-          // else if (src1_input == ev_floor) begin end // open and close door. will be done above
+          // else if (src1_input == ev_floor) begin end // open and close door. will be done naturally
           // else 
           if (src1_input > ev_floor)
           begin
@@ -154,7 +150,7 @@ module controller(
         if (on_board == 2'b01) // only 1 is on ride
         begin
           // if (src2_input > ev_floor) begin end // ignore
-          // else if (src2_input == ev_floor) begin end // open and close door. will be done above
+          // else if (src2_input == ev_floor) begin end // open and close door. will be done naturally
           // else 
           if (src2_input < ev_floor)
           begin
@@ -168,7 +164,7 @@ module controller(
         else if (on_board == 2'b10) // only 2 is on ride
         begin
           // if (src1_input > ev_floor) begin end // ignore
-          // else if (src1_input == ev_floor) begin end // open and close door. will be done above
+          // else if (src1_input == ev_floor) begin end // open and close door. will be done naturally
           // else
           if (src1_input < ev_floor)
           begin
