@@ -38,7 +38,8 @@ module controller(
   end
 
   // Assigning Inputs => State Transition
-  always @(posedge set_clk) begin
+  always @(posedge set_clk)
+  begin
     // Assertion
     if (src_input == dest_input)
       $display("Input Assertion Failed");
@@ -68,7 +69,8 @@ module controller(
   end
 
   // State Transition
-  always @(posedge ev_door) begin
+  always @(posedge ev_door)
+  begin
     if ((done == 2'b10 | done == 2'b00) & (on_board == 2'b10 | on_board == 2'b00) & ev_floor == src1_input) // If 1st rides
     begin
       on_board = on_board + 2'b01; // on_board = 2'bx1;
@@ -90,85 +92,70 @@ module controller(
     end
   end
 
-  always @(posedge clk) begin
-    if (done == 2'b00)
+  always @(posedge clk)
+  begin
+    if (done == 2'b10 & on_board == 2'b00) target_floor_input = src1_input;
+    else if (done == 2'b10 & on_board == 2'b01) target_floor_input = dest1_input;
+    else if (done == 2'b01 & on_board == 2'b00) target_floor_input = src2_input;
+    else if (done == 2'b01 & on_board == 2'b10) target_floor_input = dest2_input;
+    else if (done == 2'b00 & on_board == 2'b00)
     begin
       if (direction1_input == 1 & direction2_input == 1)
       begin
-        if (on_board == 2'b01) // only 1 is on ride
-        begin
-          if (src2_input > ev_floor)
-          begin
-            if (src2_input < dest1_input) target_floor_input = src2_input;
-            else if (src2_input > dest1_input) target_floor_input = dest1_input;
-          end
-        end
-        else if (on_board == 2'b10) // only 2 is on ride
-        begin
-          if (src1_input > ev_floor)
-          begin
-            if (src1_input < dest2_input) target_floor_input = src1_input;
-            else if (src1_input > dest2_input) target_floor_input = dest2_input;
-          end
-        end
-        else if (on_board == 2'b00) // 1 and 2 both is not on ride yet
-        begin
-          if (src1_input < src2_input) target_floor_input = src1_input;
-          else if (src1_input > src2_input) target_floor_input = src2_input;
-        end
-        else if (on_board == 2'b11) // 1 and 2 is both on ride
-        begin
-          if (dest1_input < dest2_input) target_floor_input = dest1_input;
-          else if (dest1_input > dest2_input) target_floor_input = dest2_input;
-        end
+        if (src1_input < src2_input) target_floor_input = src1_input;
+        else if (src1_input > src2_input) target_floor_input = src2_input;
       end
       else if (direction1_input == 0 & direction2_input == 0)
       begin
-        if (on_board == 2'b01) // only 1 is on ride
-        begin
-          if (src2_input < ev_floor)
-          begin
-            if (src2_input > dest1_input) target_floor_input = src2_input;
-            else if (src2_input < dest1_input) target_floor_input = dest1_input;
-          end
-        end
-        else if (on_board == 2'b10) // only 2 is on ride
-        begin
-          if (src1_input < ev_floor)
-          begin
-            if (src1_input > dest2_input) target_floor_input = src1_input;
-            else if (src1_input < dest2_input) target_floor_input = dest2_input;
-          end
-        end
-        else if (on_board == 2'b00) // 1 and 2 both is not on ride yet
-        begin
-          if (src1_input > src2_input) target_floor_input = src1_input;
-          else if (src1_input < src2_input) target_floor_input = src2_input;
-        end
-        else if (on_board == 2'b11) // 1 and 2 is both on ride
+        if (src1_input > src2_input) target_floor_input = src1_input;
+        else if (src1_input < src2_input) target_floor_input = src2_input;
+      end
+      else target_floor_input = src1_input;
+    end
+    else if (done == 2'b00 & on_board == 2'b11)
+    begin
+      if (direction1_input == 1 & direction2_input == 1)
+      begin
+        if (dest1_input < dest2_input) target_floor_input = dest1_input;
+        else if (dest1_input > dest2_input) target_floor_input = dest2_input;
+      end
+      else if (direction1_input == 0 & direction2_input == 0)
         begin
           if (dest1_input > dest2_input) target_floor_input = dest1_input;
           else if (dest1_input < dest2_input) target_floor_input = dest2_input;
         end
-      end
-      else
+      // Impossible Case
+      // else target_floor_input = dest1_input;
+    end
+    else if (done == 2'b00 & on_board == 2'b01)
+    begin
+      if (direction1_input == 1 & direction2_input == 1)
       begin
-        if (on_board == 2'b00) target_floor_input = src1_input;
-        else if (on_board == 2'b01) target_floor_input = dest1_input;
+        if (dest1_input < src2_input) target_floor_input = dest1_input;
+        else if (dest1_input > src2_input) target_floor_input = src2_input;
       end
+      else if (direction1_input == 0 & direction2_input == 0)
+      begin
+        if (dest1_input > src2_input) target_floor_input = dest1_input;
+        else if (dest1_input < src2_input) target_floor_input = src2_input;
+      end
+      else target_floor_input = dest1_input;
     end
-    else if (done == 2'b10) // 1 is not done
+    else if (done == 2'b00 & on_board == 2'b10)
     begin
-      if (on_board == 2'b00 | on_board == 2'b10) target_floor_input = src1_input;
-      else if (on_board == 2'b01 | on_board == 2'b11) target_floor_input = dest1_input;
-    end
-    else if (done == 2'b01) // 2 is not done
-    begin
-      if (on_board == 2'b00 | on_board == 2'b01) target_floor_input = src2_input;
-      else if (on_board == 2'b10 | on_board == 2'b11) target_floor_input = dest2_input;
+      if (direction1_input == 1 & direction2_input == 1)
+      begin
+        if (src1_input < dest2_input) target_floor_input = src1_input;
+        else if (src1_input > dest2_input) target_floor_input = dest2_input;
+      end
+      else if (direction1_input == 0 & direction2_input == 0)
+      begin
+        if (src1_input > dest2_input) target_floor_input = src1_input;
+        else if (src1_input < dest2_input) target_floor_input = dest2_input;
+      end
+      else target_floor_input = dest2_input;
     end
   end
-
 endmodule
 
 module target_controller(
