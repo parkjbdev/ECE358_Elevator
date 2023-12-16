@@ -9,8 +9,8 @@ xmlns="http://www.w3.org/TR/REC-html40">
 <meta name=ProgId content=Word.Document>
 <meta name=Generator content="Microsoft Word 15">
 <meta name=Originator content="Microsoft Word 15">
-<link rel=File-List href="Elevator%20보고서.fld/filelist.xml">
-<link rel=Edit-Time-Data href="Elevator%20보고서.fld/editdata.mso">
+<link rel=File-List href="http://github.com/parkjbdev/verilog_elevator/blob/main/Elevator%20보고서.fld/filelist.xml">
+<link rel=Edit-Time-Data href="http://github.com/parkjbdev/verilog_elevator/blob/main/Elevator%20보고서.fld/editdata.mso">
 <!--[if !mso]>
 <style>
 v\:* {behavior:url(#default#VML);}
@@ -38,8 +38,8 @@ w\:* {behavior:url(#default#VML);}
   <o:AllowPNG/>
  </o:OfficeDocumentSettings>
 </xml><![endif]-->
-<link rel=themeData href="Elevator%20보고서.fld/themedata.thmx">
-<link rel=colorSchemeMapping href="Elevator%20보고서.fld/colorschememapping.xml">
+<link rel=themeData href="http://github.com/parkjbdev/verilog_elevator/blob/main/Elevator%20보고서.fld/themedata.thmx">
+<link rel=colorSchemeMapping href="http://github.com/parkjbdev/verilog_elevator/blob/main/Elevator%20보고서.fld/colorschememapping.xml">
 <!--[if gte mso 9]><xml>
  <w:WordDocument>
   <w:Zoom>164</w:Zoom>
@@ -1244,10 +1244,10 @@ class=SpellE>모듈간의</span> 큰 틀은 다음과 같았다<span lang=EN-US>
  <o:lock v:ext="edit" aspectratio="t"/>
 </v:shapetype><v:shape id="_x0000_i1032" type="#_x0000_t75" alt="텍스트, 스크린샷, 폰트, 라인이(가) 표시된 사진&#10;&#10;자동 생성된 설명"
  style='width:452pt;height:152pt;visibility:visible;mso-wrap-style:square'>
- <v:imagedata src="Elevator%20보고서.fld/image001.png" o:title="텍스트, 스크린샷, 폰트, 라인이(가) 표시된 사진&#10;&#10;자동 생성된 설명"
+ <v:imagedata src="http://github.com/parkjbdev/verilog_elevator/blob/main/Elevator%20보고서.fld/image001.png" o:title="텍스트, 스크린샷, 폰트, 라인이(가) 표시된 사진&#10;&#10;자동 생성된 설명"
   cropbottom="3760f"/>
 </v:shape><![endif]--><![if !vml]><img width=452 height=152
-src="Elevator%20보고서.fld/image002.png"
+src="http://github.com/parkjbdev/verilog_elevator/blob/main/Elevator%20보고서.fld/image002.png"
 alt="텍스트, 스크린샷, 폰트, 라인이(가) 표시된 사진&#10;&#10;자동 생성된 설명" v:shapes="_x0000_i1032"><![endif]></span></p>
 
 <p class=MsoNormal>이를 세부적으로 구현하기 위하여 이와 같은 구조로 실제 모듈들을 설계하였다<span lang=EN-US>.</span></p>
@@ -1255,9 +1255,9 @@ alt="텍스트, 스크린샷, 폰트, 라인이(가) 표시된 사진&#10;&#10;�
 <p class=MsoNormal><span lang=EN-US style='mso-no-proof:yes'><!--[if gte vml 1]><v:shape
  id="_x0000_i1031" type="#_x0000_t75" alt="텍스트, 폰트, 도표, 라인이(가) 표시된 사진&#10;&#10;자동 생성된 설명"
  style='width:451pt;height:148pt;visibility:visible;mso-wrap-style:square'>
- <v:imagedata src="Elevator%20보고서.fld/image003.png" o:title="텍스트, 폰트, 도표, 라인이(가) 표시된 사진&#10;&#10;자동 생성된 설명"/>
+ <v:imagedata src="http://github.com/parkjbdev/verilog_elevator/blob/main/Elevator%20보고서.fld/image003.png" o:title="텍스트, 폰트, 도표, 라인이(가) 표시된 사진&#10;&#10;자동 생성된 설명"/>
 </v:shape><![endif]--><![if !vml]><img width=451 height=148
-src="Elevator%20보고서.fld/image003.png"
+src="http://github.com/parkjbdev/verilog_elevator/blob/main/Elevator%20보고서.fld/image003.png"
 alt="텍스트, 폰트, 도표, 라인이(가) 표시된 사진&#10;&#10;자동 생성된 설명" v:shapes="_x0000_i1031"><![endif]></span></p>
 
 <p class=MsoNormal><span class=SpellE><span lang=EN-US>Target_Controller</span></span>는
@@ -1611,9 +1611,9 @@ lang=EN-US>. </span></p>
 <p class=MsoNormal><span lang=EN-US style='mso-no-proof:yes'><!--[if gte vml 1]><v:shape
  id="_x0000_i1030" type="#_x0000_t75" alt="텍스트, 도표, 원, 친필이(가) 표시된 사진&#10;&#10;자동 생성된 설명"
  style='width:452pt;height:356pt;visibility:visible;mso-wrap-style:square'>
- <v:imagedata src="Elevator%20보고서.fld/image004.png" o:title="텍스트, 도표, 원, 친필이(가) 표시된 사진&#10;&#10;자동 생성된 설명"/>
+ <v:imagedata src="http://github.com/parkjbdev/verilog_elevator/blob/main/Elevator%20보고서.fld/image004.png" o:title="텍스트, 도표, 원, 친필이(가) 표시된 사진&#10;&#10;자동 생성된 설명"/>
 </v:shape><![endif]--><![if !vml]><img width=452 height=356
-src="Elevator%20보고서.fld/image004.png"
+src="http://github.com/parkjbdev/verilog_elevator/blob/main/Elevator%20보고서.fld/image004.png"
 alt="텍스트, 도표, 원, 친필이(가) 표시된 사진&#10;&#10;자동 생성된 설명" v:shapes="_x0000_i1030"><![endif]></span></p>
 
 <p class=MsoNormal>위의 <span lang=EN-US>2</span>개의 <span lang=EN-US>bit</span>가 <span
@@ -1631,9 +1631,9 @@ lang=EN-US>.</span></p>
 <p class=MsoNormal><span lang=EN-US style='mso-no-proof:yes'><!--[if gte vml 1]><v:shape
  id="_x0000_i1029" type="#_x0000_t75" alt="스크린샷, 텍스트이(가) 표시된 사진&#10;&#10;자동 생성된 설명"
  style='width:451pt;height:174pt;visibility:visible;mso-wrap-style:square'>
- <v:imagedata src="Elevator%20보고서.fld/image005.png" o:title="스크린샷, 텍스트이(가) 표시된 사진&#10;&#10;자동 생성된 설명"/>
+ <v:imagedata src="http://github.com/parkjbdev/verilog_elevator/blob/main/Elevator%20보고서.fld/image005.png" o:title="스크린샷, 텍스트이(가) 표시된 사진&#10;&#10;자동 생성된 설명"/>
 </v:shape><![endif]--><![if !vml]><img width=451 height=174
-src="Elevator%20보고서.fld/image005.png" alt="스크린샷, 텍스트이(가) 표시된 사진&#10;&#10;자동 생성된 설명"
+src="http://github.com/parkjbdev/verilog_elevator/blob/main/Elevator%20보고서.fld/image005.png" alt="스크린샷, 텍스트이(가) 표시된 사진&#10;&#10;자동 생성된 설명"
 v:shapes="_x0000_i1029"><![endif]></span></p>
 
 <p class=MsoNormal><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
@@ -2088,9 +2088,9 @@ lang=EN-US>. </span>이를 결정하는 방법은 다음의 표와 같다<span l
 <p class=MsoNormal><span lang=EN-US style='mso-no-proof:yes'><!--[if gte vml 1]><v:shape
  id="_x0000_i1028" type="#_x0000_t75" alt="텍스트, 스크린샷, 폰트이(가) 표시된 사진&#10;&#10;자동 생성된 설명"
  style='width:451pt;height:325pt;visibility:visible;mso-wrap-style:square'>
- <v:imagedata src="Elevator%20보고서.fld/image006.png" o:title="텍스트, 스크린샷, 폰트이(가) 표시된 사진&#10;&#10;자동 생성된 설명"/>
+ <v:imagedata src="http://github.com/parkjbdev/verilog_elevator/blob/main/Elevator%20보고서.fld/image006.png" o:title="텍스트, 스크린샷, 폰트이(가) 표시된 사진&#10;&#10;자동 생성된 설명"/>
 </v:shape><![endif]--><![if !vml]><img width=451 height=325
-src="Elevator%20보고서.fld/image006.png"
+src="http://github.com/parkjbdev/verilog_elevator/blob/main/Elevator%20보고서.fld/image006.png"
 alt="텍스트, 스크린샷, 폰트이(가) 표시된 사진&#10;&#10;자동 생성된 설명" v:shapes="_x0000_i1028"><![endif]></span></p>
 
 <p class=MsoNormal>이를 작성한 코드는 위와 같다<span lang=EN-US>.</span></p>
@@ -2121,9 +2121,9 @@ lang=EN-US>.</span></p>
 <p class=MsoNormal><span lang=EN-US style='mso-no-proof:yes'><!--[if gte vml 1]><v:shape
  id="그림_x0020_1019255875" o:spid="_x0000_i1027" type="#_x0000_t75" style='width:451pt;
  height:281pt;visibility:visible;mso-wrap-style:square'>
- <v:imagedata src="Elevator%20보고서.fld/image007.png" o:title=""/>
+ <v:imagedata src="http://github.com/parkjbdev/verilog_elevator/blob/main/Elevator%20보고서.fld/image007.png" o:title=""/>
 </v:shape><![endif]--><![if !vml]><img width=451 height=281
-src="Elevator%20보고서.fld/image007.png" v:shapes="그림_x0020_1019255875"><![endif]></span></p>
+src="http://github.com/parkjbdev/verilog_elevator/blob/main/Elevator%20보고서.fld/image007.png" v:shapes="그림_x0020_1019255875"><![endif]></span></p>
 
 <p class=MsoNormal>상태에 대한 <span lang=EN-US>Notation</span>은 <span lang=EN-US>1Fc</span>는
 <span lang=EN-US>floor1_closed, 2Fc</span>는 <span lang=EN-US>floor2_closed, 3Fo</span>는
@@ -2362,9 +2362,9 @@ style='mso-list:Ignore'>-<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
 <p class=MsoNormal><span lang=EN-US style='mso-no-proof:yes'><!--[if gte vml 1]><v:shape
  id="_x0000_i1026" type="#_x0000_t75" alt="스크린샷, 텍스트, 멀티미디어 소프트웨어, 그래픽 소프트웨어이(가) 표시된 사진&#10;&#10;자동 생성된 설명"
  style='width:452pt;height:102pt;visibility:visible;mso-wrap-style:square'>
- <v:imagedata src="Elevator%20보고서.fld/image008.png" o:title="스크린샷, 텍스트, 멀티미디어 소프트웨어, 그래픽 소프트웨어이(가) 표시된 사진&#10;&#10;자동 생성된 설명"/>
+ <v:imagedata src="http://github.com/parkjbdev/verilog_elevator/blob/main/Elevator%20보고서.fld/image008.png" o:title="스크린샷, 텍스트, 멀티미디어 소프트웨어, 그래픽 소프트웨어이(가) 표시된 사진&#10;&#10;자동 생성된 설명"/>
 </v:shape><![endif]--><![if !vml]><img width=452 height=102
-src="Elevator%20보고서.fld/image008.png"
+src="http://github.com/parkjbdev/verilog_elevator/blob/main/Elevator%20보고서.fld/image008.png"
 alt="스크린샷, 텍스트, 멀티미디어 소프트웨어, 그래픽 소프트웨어이(가) 표시된 사진&#10;&#10;자동 생성된 설명" v:shapes="_x0000_i1026"><![endif]></span></p>
 
 <p class=MsoNormal>의도하였던 대로<span lang=EN-US>, 1</span>층에 있는 <span class=SpellE>엘레베이터가</span>
@@ -2432,9 +2432,9 @@ style='mso-list:Ignore'>-<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
 <p class=MsoNormal><span lang=EN-US style='mso-no-proof:yes'><!--[if gte vml 1]><v:shape
  id="그림_x0020_1" o:spid="_x0000_i1025" type="#_x0000_t75" alt="스크린샷, 텍스트, 멀티미디어 소프트웨어, 그래픽 소프트웨어이(가) 표시된 사진&#10;&#10;자동 생성된 설명"
  style='width:452pt;height:126pt;visibility:visible;mso-wrap-style:square'>
- <v:imagedata src="Elevator%20보고서.fld/image009.png" o:title="스크린샷, 텍스트, 멀티미디어 소프트웨어, 그래픽 소프트웨어이(가) 표시된 사진&#10;&#10;자동 생성된 설명"/>
+ <v:imagedata src="http://github.com/parkjbdev/verilog_elevator/blob/main/Elevator%20보고서.fld/image009.png" o:title="스크린샷, 텍스트, 멀티미디어 소프트웨어, 그래픽 소프트웨어이(가) 표시된 사진&#10;&#10;자동 생성된 설명"/>
 </v:shape><![endif]--><![if !vml]><img width=452 height=126
-src="Elevator%20보고서.fld/image009.png"
+src="http://github.com/parkjbdev/verilog_elevator/blob/main/Elevator%20보고서.fld/image009.png"
 alt="스크린샷, 텍스트, 멀티미디어 소프트웨어, 그래픽 소프트웨어이(가) 표시된 사진&#10;&#10;자동 생성된 설명" v:shapes="그림_x0020_1"><![endif]></span></p>
 
 <p class=MsoNormal>의도하였던 대로<span lang=EN-US>, 1</span>층에서 <span lang=EN-US>4</span>층에
